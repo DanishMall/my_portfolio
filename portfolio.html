@@ -59,14 +59,14 @@
                     </div>
         
                     <div class="home-data">
-                        <h1 class="home-title">Hi, I'm <span>Danish</span></h1>
-                        <h2 class="home-subtitle">Creative Web Developer</h2>
+                        <h1 class="home-title">Hi, I'm <span>Danish Ikmal</span></h1>
+                        <h2 class="home-subtitle">Software Engineering</h2>
                         <p class="home-description">
                             Transforming ideas into elegant digital experiences with clean, innovative code.
                         </p>
                         <div class="home-buttons">
                             <a href="#contact" class="btn btn-primary">Contact Me</a>
-                            <a href="#" class="btn btn-outline">Download CV</a>
+                            <a href="./doc/DanishIkmal_SoftwareDevelop_Resume.pdf" class="btn btn-outline">Download CV</a>
                         </div>
                     </div>
         
@@ -118,14 +118,14 @@
                                 <div class="about-box-content">
                                     <i class="ri-medal-line about-icon"></i>
                                     <h3 class="about-title">Experience</h3>
-                                    <span class="about-subtitle">5+ Years</span>
+                                    <span class="about-subtitle">1+ Years</span>
                                 </div>
                             </div>
                             <div class="about-box">
                                 <div class="about-box-content">
                                     <i class="ri-briefcase-line about-icon"></i>
                                     <h3 class="about-title">Completed</h3>
-                                    <span class="about-subtitle">20+ Projects</span>
+                                    <span class="about-subtitle">10+ Projects</span>
                                 </div>
                             </div>
                             <div class="about-box">
@@ -430,70 +430,123 @@
             
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <div class="project-card">
-                    <h2>Portable Blood Type Recognition</h2>
-                    <p>A portable device using computer vision to quickly identify blood types from samples. Built with Raspberry Pi and deep learning for accurate, real-time blood type classification. This supports offline and online mode to upload results on a website for users to view.</p>
-                    <div class="tags-container">
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">OpenCV</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Internet-of-Things</span>
-                        <span class="tag">Raspberry Pi</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Bootstrap</span>
+                <div class="project-card" onclick="toggleActive(this)">
+                    <div class="project-image" onclick="event.stopPropagation(); openGallery('project1')">
+                        <img src="./img/wix_main.png" alt="Main Page" />
+                        <div class="project-image-overlay"></div>
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <div class="project-content">
+                        <h2>Kak Ani Western Food - Online Booking</h2>
+                        <p class="project-description">Enjoy delicious, homemade western meals with an easy-to-use online ordering system. Browse our menu, place your order, and enjoy your favorite dishes at your convenience—anytime, anywhere.</p>
+                        
+                        <div class="project-highlights">
+                            <h3>Key Features</h3>
+                            <ul class="highlights-list">
+                                <li>🍔 Online Food Ordering System</li>
+                                <li>📋 Interactive Digital Menu</li>
+                                <li>🧾 Online Payment</li>
+                                <li>🛒 Real-Time Cart & Checkout </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tags-container">
+                            <span class="tag">WIX.com</span>
+                            <span class="tag">Designer</span>
+                            <span class="tag">Maintain</span>
+                            <span class="tag">Mobile-Friendly Layouts</span>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="project-card">
-                    <h2>Face Recognition with Mask Detection Attendance System</h2>
-                    <p>Automated attendance system that can recognize faces and check if they are wearing masks. Features real-time detection, attendance logging, and reporting capabilities for schools and offices.</p>
-                    <div class="tags-container">
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">OpenCV</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Internet-of-Things</span>
-                        <span class="tag">Raspberry Pi</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Bootstrap</span>
+                <div class="project-card" onclick="toggleActive(this)">
+                    <div class="project-image" onclick="event.stopPropagation(); openGallery('project2')">
+                        <img src="" alt="Face Recognition System" />
+                        <div class="project-image-overlay"></div>
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <div class="project-content">
+                        <h2>UNISEL Student Activity Tracking for Hostel</h2>
+                        <p class="project-description">Focus on student to collect the point for applying the hostel. Student must have minimum point for hostel application.</p>
+                        
+                        <div class="project-highlights">
+                            <h3>Key Features</h3>
+                            <ul class="highlights-list">
+                                <li>Event History</li>
+                                <li>Hostel Request</li>
+                                <li>Real-time points colllected</li>
+                                <li>User-friendly</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tags-container">
+                            <span class="tag">Android Studio</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">XML</span>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="project-card">
-                    <h2>Air Quality Monitoring System with Predictive Analysis</h2>
-                    <p>IoT-based air quality monitoring system that measures various pollutants and uses machine learning to predict future air quality levels. Includes mobile alerts for poor air quality. This has a web dashboard for monitoring the air quality of the area, data logging, and visualization.</p>
-                    <div class="tags-container">
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Arduino</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">Internet-of-Things</span>
-                        <span class="tag">ESP32</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Bootstrap</span>
+                <div class="project-card" onclick="toggleActive(this)">
+                    <div class="project-image" onclick="event.stopPropagation(); openGallery('project3')">
+                        <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Air Quality Monitoring System" />
+                        <div class="project-image-overlay"></div>
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <div class="project-content">
+                        <h2>Air Quality Monitoring System with Predictive Analysis</h2>
+                        <p class="project-description">IoT-based air quality monitoring system that measures various pollutants and uses machine learning to predict future air quality levels.</p>
+                        
+                        <div class="project-highlights">
+                            <h3>Key Features</h3>
+                            <ul class="highlights-list">
+                                <li>Multi-pollutant monitoring and analysis</li>
+                                <li>Predictive modeling for future air quality</li>
+                                <li>Mobile alerts for poor air quality conditions</li>
+                                <li>Web dashboard with data visualization</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tags-container">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Arduino</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">IoT</span>
+                            <span class="tag">ESP32</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Bootstrap</span>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Project 4 (No longer featured) -->
-                <!-- <div class="project-card">
-                    <h2>Automated Answer Sheet Scoring System with Optical Mark Recognition</h2>
-                    <p>High-speed scanning and scoring system for multiple-choice answer sheets. Features automatic grade calculation, statistical analysis, and result export functionality. This has a web dashboard for users to view their results and also has SMS support for sending the results to the students.</p>
-                    <div class="tags-container">
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">OpenCV</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Internet-of-Things</span>
-                        <span class="tag">Raspberry Pi</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Bootstrap</span>
-                    </div>
-                </div> -->
             </div>
+        </section>
+    
+        <!-- Full Screen Gallery -->
+        <div class="gallery-overlay" id="galleryOverlay">
+            <div class="gallery-container">
+                <button class="gallery-close" onclick="closeGallery()">&times;</button>
+                <div class="gallery-counter" id="galleryCounter">1 / 4</div>
+                
+                <button class="gallery-nav gallery-prev" onclick="changeImage(-1)">‹</button>
+                <img class="gallery-main-image" id="galleryMainImage" src="" alt="Project Image" />
+                <button class="gallery-nav gallery-next" onclick="changeImage(1)">›</button>
+                
+                <div class="gallery-info" id="galleryInfo">
+                    <h3 id="galleryTitle">Project Title</h3>
+                    <p id="galleryDescription">Image description</p>
+                </div>
+                
+                <div class="gallery-thumbnails" id="galleryThumbnails"></div>
+            </div>
+        </div>
         </section>
 
         <!-- Contact Section -->
@@ -510,8 +563,8 @@
                                 <i class="ri-mail-line contact-icon"></i>
                             </div>
                             <h3>Email</h3>
-                            <p>danish@example.com</p>
-                            <a href="mailto:danish@example.com" class="contact-link">
+                            <p>dinidanish008@gmail.com</p>
+                            <a href="mailto:dinidanish008@gmail.com" class="contact-link">
                                 Send Email <i class="ri-send-plane-line"></i>
                             </a>
                         </div>
@@ -520,8 +573,8 @@
                                 <i class="ri-whatsapp-line contact-icon"></i>
                             </div>
                             <h3>WhatsApp</h3>
-                            <p>+60 12345678</p>
-                            <a href="https://wa.me/12345678" class="contact-link">
+                            <p>+60 172938547</p>
+                            <a href="https://wa.me/0172938547" class="contact-link">
                                 Start Chat <i class="ri-chat-3-line"></i>
                             </a>
                         </div>
@@ -1009,25 +1062,197 @@
 
     <!-- PROJECT CARD NEWEST -->
     <script>
-        // JavaScript to handle the active state when cards are clicked
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get all project cards
-            const projectCards = document.querySelectorAll('.project-card');
-            
-            // Add click event listener to each card
-            projectCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    // If this card is already active, remove active state
-                    if (this.classList.contains('active')) {
-                        this.classList.remove('active');
-                    } else {
-                        // Remove active class from any other card
-                        projectCards.forEach(c => c.classList.remove('active'));
-                        
-                        // Add active class to the clicked card
-                        this.classList.add('active');
+        // Gallery data for each project
+        const projectGalleries = {
+            project1: {
+                title: "Portable Blood Type Recognition",
+                images: [
+                    {
+                        src: "./img/wix_main.png",
+                        description: "Main device setup with Raspberry Pi and camera module"
+                    },
+                    {
+                        src: "./img/wix_ordering.png",
+                        description: "Blood sample analysis interface showing real-time results"
+                    },
+                    {
+                        src: "./img/wix_menu.png",
+                        description: "Web dashboard displaying patient data and test history"
+                    },
+                    {
+                        src: "./img/wix_member.png",
+                        description: "Portable case design for field deployment"
                     }
-                });
+                ]
+            },
+            project2: {
+                title: "Face Recognition with Mask Detection",
+                images: [
+                    {
+                        src: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        description: "Real-time face detection and mask recognition system"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        description: "Attendance tracking dashboard with user management"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        description: "Statistical analysis and reporting interface"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        description: "Hardware setup with camera and processing unit"
+                    }
+                ]
+            },
+            project3: {
+                title: "Air Quality Monitoring System",
+                images: [
+                    {
+                        src: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        description: "Main monitoring station with multiple sensors"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        description: "Real-time data visualization and analytics dashboard"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        description: "Predictive analysis charts and air quality forecasting"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        description: "Mobile app interface for alerts and notifications"
+                    }
+                ]
+            }
+        };
+
+        let currentProject = '';
+        let currentImageIndex = 0;
+
+        function openGallery(projectId) {
+            currentProject = projectId;
+            currentImageIndex = 0;
+            
+            const gallery = projectGalleries[projectId];
+            const overlay = document.getElementById('galleryOverlay');
+            const mainImage = document.getElementById('galleryMainImage');
+            const thumbnails = document.getElementById('galleryThumbnails');
+            
+            // Set main image
+            updateMainImage();
+            
+            // Create thumbnails
+            thumbnails.innerHTML = '';
+            gallery.images.forEach((image, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = image.src;
+                thumb.className = 'gallery-thumbnail';
+                if (index === 0) thumb.classList.add('active');
+                thumb.onclick = () => goToImage(index);
+                thumbnails.appendChild(thumb);
+            });
+            
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeGallery() {
+            const overlay = document.getElementById('galleryOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        function changeImage(direction) {
+            const gallery = projectGalleries[currentProject];
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= gallery.images.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = gallery.images.length - 1;
+            }
+            
+            updateMainImage();
+            updateThumbnails();
+        }
+
+        function goToImage(index) {
+            currentImageIndex = index;
+            updateMainImage();
+            updateThumbnails();
+        }
+
+        function updateMainImage() {
+            const gallery = projectGalleries[currentProject];
+            const currentImage = gallery.images[currentImageIndex];
+            
+            document.getElementById('galleryMainImage').src = currentImage.src;
+            document.getElementById('galleryTitle').textContent = gallery.title;
+            document.getElementById('galleryDescription').textContent = currentImage.description;
+            document.getElementById('galleryCounter').textContent = `${currentImageIndex + 1} / ${gallery.images.length}`;
+        }
+
+        function updateThumbnails() {
+            const thumbnails = document.querySelectorAll('.gallery-thumbnail');
+            thumbnails.forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === currentImageIndex);
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('galleryOverlay').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                else if (e.key === 'ArrowRight') changeImage(1);
+                else if (e.key === 'Escape') closeGallery();
+            }
+        });
+
+        // Close gallery when clicking outside
+        document.getElementById('galleryOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGallery();
+            }
+        });
+        function toggleActive(card) {
+            // Remove active class from all cards
+            document.querySelectorAll('.project-card').forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked card
+            card.classList.add('active');
+            
+            // Optional: Remove active state after 3 seconds
+            setTimeout(() => {
+                card.classList.remove('active');
+            }, 3000);
+        }
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        });
+
+        // Add parallax effect to project icons
+        document.addEventListener('mousemove', function(e) {
+            const icons = document.querySelectorAll('.project-icon');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            icons.forEach(icon => {
+                const moveX = (mouseX - 0.5) * 20;
+                const moveY = (mouseY - 0.5) * 20;
+                icon.style.transform = `translate(${moveX}px, ${moveY}px)`;
             });
         });
     </script>
