@@ -462,7 +462,7 @@
                 <!-- Project 2 -->
                 <div class="project-card" onclick="toggleActive(this)">
                     <div class="project-image" onclick="event.stopPropagation(); openGallery('project2')">
-                        <img src="" alt="Face Recognition System" />
+                        <img src="./img/project_main.png" alt="Face Recognition System" />
                         <div class="project-image-overlay"></div>
                         <div class="project-status">Completed</div>
                     </div>
@@ -1062,199 +1062,368 @@
 
     <!-- PROJECT CARD NEWEST -->
     <script>
-        // Gallery data for each project
-        const projectGalleries = {
-            project1: {
-                title: "Portable Blood Type Recognition",
-                images: [
-                    {
-                        src: "./img/wix_main.png",
-                        description: "Main device setup with Raspberry Pi and camera module"
-                    },
-                    {
-                        src: "./img/wix_ordering.png",
-                        description: "Blood sample analysis interface showing real-time results"
-                    },
-                    {
-                        src: "./img/wix_menu.png",
-                        description: "Web dashboard displaying patient data and test history"
-                    },
-                    {
-                        src: "./img/wix_member.png",
-                        description: "Portable case design for field deployment"
-                    }
-                ]
+       // Enhanced Gallery JavaScript with Better Image Handling
+const projectGalleries = {
+    project1: {
+        title: "Kak Ani Western Food - Online Booking",
+        images: [
+            {
+                src: "./img/wix_main.png",
+                description: "Main ordering interface with user-friendly design"
             },
-            project2: {
-                title: "Face Recognition with Mask Detection",
-                images: [
-                    {
-                        src: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-                        description: "Real-time face detection and mask recognition system"
-                    },
-                    {
-                        src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-                        description: "Attendance tracking dashboard with user management"
-                    },
-                    {
-                        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-                        description: "Statistical analysis and reporting interface"
-                    },
-                    {
-                        src: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-                        description: "Hardware setup with camera and processing unit"
-                    }
-                ]
+            {
+                src: "./img/wix_ordering.png",
+                description: "Streamlined ordering process with real-time cart updates"
             },
-            project3: {
-                title: "Air Quality Monitoring System",
-                images: [
-                    {
-                        src: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-                        description: "Main monitoring station with multiple sensors"
-                    },
-                    {
-                        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-                        description: "Real-time data visualization and analytics dashboard"
-                    },
-                    {
-                        src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-                        description: "Predictive analysis charts and air quality forecasting"
-                    },
-                    {
-                        src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-                        description: "Mobile app interface for alerts and notifications"
-                    }
-                ]
+            {
+                src: "./img/wix_menu.png",
+                description: "Interactive digital menu with detailed food descriptions"
+            },
+            {
+                src: "./img/wix_member.png",
+                description: "Member dashboard for order history and preferences"
             }
+        ]
+    },
+    project2: {
+        title: "UNISEL Student Activity Tracking for Hostel",
+        images: [
+            {
+                src: "./img/project_usat1.png",
+                description: "Student activity tracking dashboard with point system"
+            },
+            {
+                src: "./img/project_usat3.jpg",
+                description: "Event participation tracking and hostel application interface"
+            },
+            {
+                src: "./img/project_usat2.png",
+                description: "Real-time points collection and leaderboard system"
+            },
+            {
+                src: "./img/project_usat4.png",
+                description: "Page for student booking hostel"
+            }
+        ]
+    },
+    project3: {
+        title: "Air Quality Monitoring System",
+        images: [
+            {
+                src: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                description: "Main monitoring station with multiple sensors"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                description: "Real-time data visualization and analytics dashboard"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                description: "Predictive analysis charts and air quality forecasting"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                description: "Mobile app interface for alerts and notifications"
+            }
+        ]
+    }
+};
+
+let currentProject = '';
+let currentImageIndex = 0;
+let isImageLoading = false;
+
+function openGallery(projectId) {
+    currentProject = projectId;
+    currentImageIndex = 0;
+    
+    const gallery = projectGalleries[projectId];
+    const overlay = document.getElementById('galleryOverlay');
+    const thumbnails = document.getElementById('galleryThumbnails');
+    
+    // Create thumbnails first
+    createThumbnails(gallery, thumbnails);
+    
+    // Set main image with loading state
+    updateMainImage();
+    
+    // Show overlay
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Preload next image for smoother transitions
+    preloadNextImage();
+    
+    // Add touch/swipe support for mobile
+    addTouchSupport();
+}
+
+function createThumbnails(gallery, thumbnails) {
+    thumbnails.innerHTML = '';
+    gallery.images.forEach((image, index) => {
+        const thumb = document.createElement('img');
+        thumb.src = image.src;
+        thumb.className = 'gallery-thumbnail';
+        thumb.alt = `Thumbnail ${index + 1}`;
+        if (index === 0) thumb.classList.add('active');
+        thumb.onclick = () => goToImage(index);
+        
+        // Add loading state for thumbnails
+        thumb.onload = () => thumb.classList.add('loaded');
+        thumb.onerror = () => {
+            thumb.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZjBmMGYwIi8+CjxwYXRoIGQ9Ik0yMCAyOEMyNC40MTgzIDI4IDI4IDI0LjQxODMgMjggMjBDMjggMTUuNTgxNyAyNC40MTgzIDEyIDIwIDEyQzE1LjU4MTcgMTIgMTIgMTUuNTgxNyAxMiAyMEMxMiAyNC40MTgzIDE1LjU4MTcgMjggMjAgMjhaIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K';
         };
+        
+        thumbnails.appendChild(thumb);
+    });
+}
 
-        let currentProject = '';
-        let currentImageIndex = 0;
+function closeGallery() {
+    const overlay = document.getElementById('galleryOverlay');
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    
+    // Clean up touch listeners
+    removeTouchSupport();
+}
 
-        function openGallery(projectId) {
-            currentProject = projectId;
-            currentImageIndex = 0;
-            
-            const gallery = projectGalleries[projectId];
-            const overlay = document.getElementById('galleryOverlay');
-            const mainImage = document.getElementById('galleryMainImage');
-            const thumbnails = document.getElementById('galleryThumbnails');
-            
-            // Set main image
-            updateMainImage();
-            
-            // Create thumbnails
-            thumbnails.innerHTML = '';
-            gallery.images.forEach((image, index) => {
-                const thumb = document.createElement('img');
-                thumb.src = image.src;
-                thumb.className = 'gallery-thumbnail';
-                if (index === 0) thumb.classList.add('active');
-                thumb.onclick = () => goToImage(index);
-                thumbnails.appendChild(thumb);
-            });
-            
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+function changeImage(direction) {
+    if (isImageLoading) return; // Prevent rapid clicking during loading
+    
+    const gallery = projectGalleries[currentProject];
+    currentImageIndex += direction;
+    
+    if (currentImageIndex >= gallery.images.length) {
+        currentImageIndex = 0;
+    } else if (currentImageIndex < 0) {
+        currentImageIndex = gallery.images.length - 1;
+    }
+    
+    updateMainImage();
+    updateThumbnails();
+    preloadNextImage();
+}
+
+function goToImage(index) {
+    if (isImageLoading || index === currentImageIndex) return;
+    
+    currentImageIndex = index;
+    updateMainImage();
+    updateThumbnails();
+    preloadNextImage();
+}
+
+function updateMainImage() {
+    const gallery = projectGalleries[currentProject];
+    const currentImage = gallery.images[currentImageIndex];
+    const mainImageElement = document.getElementById('galleryMainImage');
+    const container = document.querySelector('.gallery-container');
+    
+    // Show loading state
+    isImageLoading = true;
+    container.classList.add('loading');
+    mainImageElement.classList.remove('loaded');
+    
+    // Create new image element for smooth loading
+    const newImage = new Image();
+    
+    newImage.onload = function() {
+        mainImageElement.src = this.src;
+        mainImageElement.alt = currentImage.description;
+        
+        // Update image info
+        document.getElementById('galleryTitle').textContent = gallery.title;
+        document.getElementById('galleryDescription').textContent = currentImage.description;
+        document.getElementById('galleryCounter').textContent = `${currentImageIndex + 1} / ${gallery.images.length}`;
+        
+        // Hide loading state
+        setTimeout(() => {
+            container.classList.remove('loading');
+            mainImageElement.classList.add('loaded');
+            isImageLoading = false;
+        }, 100);
+    };
+    
+    newImage.onerror = function() {
+        // Fallback for broken images
+        mainImageElement.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjZjBmMGYwIi8+CjxwYXRoIGQ9Ik0yMDAgMjEwQzIzMC4zNzYgMjEwIDI1NSAxODUuMzc2IDI1NSAxNTVDMjU1IDEyNC42MjQgMjMwLjM3NiAxMDAgMjAwIDEwMEMxNjkuNjI0IDEwMCAxNDUgMTI0LjYyNCAxNDUgMTU1QzE0NSAxODUuMzc2IDE2OS42MjQgMjEwIDIwMCAyMTBaIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iNCIvPgo8dGV4dCB4PSIyMDAiIHk9IjI0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk5OSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5JbWFnZSBub3QgZm91bmQ8L3RleHQ+Cjwvc3ZnPgo=';
+        container.classList.remove('loading');
+        isImageLoading = false;
+    };
+    
+    // Start loading the new image
+    newImage.src = currentImage.src;
+}
+
+function updateThumbnails() {
+    const thumbnails = document.querySelectorAll('.gallery-thumbnail');
+    thumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+function preloadNextImage() {
+    const gallery = projectGalleries[currentProject];
+    const nextIndex = (currentImageIndex + 1) % gallery.images.length;
+    const prevIndex = currentImageIndex === 0 ? gallery.images.length - 1 : currentImageIndex - 1;
+    
+    // Preload next and previous images
+    [nextIndex, prevIndex].forEach(index => {
+        const img = new Image();
+        img.src = gallery.images[index].src;
+    });
+}
+
+// Touch/Swipe support for mobile
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+function addTouchSupport() {
+    const overlay = document.getElementById('galleryOverlay');
+    
+    overlay.addEventListener('touchstart', handleTouchStart, { passive: true });
+    overlay.addEventListener('touchmove', handleTouchMove, { passive: true });
+    overlay.addEventListener('touchend', handleTouchEnd, { passive: true });
+}
+
+function removeTouchSupport() {
+    const overlay = document.getElementById('galleryOverlay');
+    
+    overlay.removeEventListener('touchstart', handleTouchStart);
+    overlay.removeEventListener('touchmove', handleTouchMove);
+    overlay.removeEventListener('touchend', handleTouchEnd);
+}
+
+function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+}
+
+function handleTouchMove(e) {
+    touchEndX = e.changedTouches[0].clientX;
+    touchEndY = e.changedTouches[0].clientY;
+}
+
+function handleTouchEnd(e) {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    const minSwipeDistance = 50;
+    
+    // Horizontal swipe (image navigation)
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+        if (deltaX > 0) {
+            changeImage(-1); // Swipe right = previous image
+        } else {
+            changeImage(1);  // Swipe left = next image
         }
+    }
+    // Vertical swipe down (close gallery)
+    else if (deltaY > minSwipeDistance && Math.abs(deltaX) < minSwipeDistance) {
+        closeGallery();
+    }
+}
 
-        function closeGallery() {
-            const overlay = document.getElementById('galleryOverlay');
-            overlay.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-
-        function changeImage(direction) {
-            const gallery = projectGalleries[currentProject];
-            currentImageIndex += direction;
-            
-            if (currentImageIndex >= gallery.images.length) {
-                currentImageIndex = 0;
-            } else if (currentImageIndex < 0) {
-                currentImageIndex = gallery.images.length - 1;
-            }
-            
-            updateMainImage();
-            updateThumbnails();
-        }
-
-        function goToImage(index) {
-            currentImageIndex = index;
-            updateMainImage();
-            updateThumbnails();
-        }
-
-        function updateMainImage() {
-            const gallery = projectGalleries[currentProject];
-            const currentImage = gallery.images[currentImageIndex];
-            
-            document.getElementById('galleryMainImage').src = currentImage.src;
-            document.getElementById('galleryTitle').textContent = gallery.title;
-            document.getElementById('galleryDescription').textContent = currentImage.description;
-            document.getElementById('galleryCounter').textContent = `${currentImageIndex + 1} / ${gallery.images.length}`;
-        }
-
-        function updateThumbnails() {
-            const thumbnails = document.querySelectorAll('.gallery-thumbnail');
-            thumbnails.forEach((thumb, index) => {
-                thumb.classList.toggle('active', index === currentImageIndex);
-            });
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (document.getElementById('galleryOverlay').classList.contains('active')) {
-                if (e.key === 'ArrowLeft') changeImage(-1);
-                else if (e.key === 'ArrowRight') changeImage(1);
-                else if (e.key === 'Escape') closeGallery();
-            }
-        });
-
-        // Close gallery when clicking outside
-        document.getElementById('galleryOverlay').addEventListener('click', function(e) {
-            if (e.target === this) {
+// Enhanced keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('galleryOverlay').classList.contains('active')) {
+        switch(e.key) {
+            case 'ArrowLeft':
+            case 'a':
+            case 'A':
+                e.preventDefault();
+                changeImage(-1);
+                break;
+            case 'ArrowRight':
+            case 'd':
+            case 'D':
+                e.preventDefault();
+                changeImage(1);
+                break;
+            case 'Escape':
+                e.preventDefault();
                 closeGallery();
-            }
-        });
-        function toggleActive(card) {
-            // Remove active class from all cards
-            document.querySelectorAll('.project-card').forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked card
-            card.classList.add('active');
-            
-            // Optional: Remove active state after 3 seconds
-            setTimeout(() => {
-                card.classList.remove('active');
-            }, 3000);
+                break;
+            case ' ':
+                e.preventDefault();
+                changeImage(1);
+                break;
+            case 'Home':
+                e.preventDefault();
+                goToImage(0);
+                break;
+            case 'End':
+                e.preventDefault();
+                goToImage(projectGalleries[currentProject].images.length - 1);
+                break;
         }
+    }
+});
 
-        // Add some interactive hover effects
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                if (!this.classList.contains('active')) {
-                    this.style.transform = 'translateY(0) scale(1)';
-                }
-            });
-        });
+// Close gallery when clicking outside the image
+document.getElementById('galleryOverlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeGallery();
+    }
+});
 
-        // Add parallax effect to project icons
-        document.addEventListener('mousemove', function(e) {
-            const icons = document.querySelectorAll('.project-icon');
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            icons.forEach(icon => {
-                const moveX = (mouseX - 0.5) * 20;
-                const moveY = (mouseY - 0.5) * 20;
-                icon.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
-        });
+// Project card interaction
+function toggleActive(card) {
+    document.querySelectorAll('.project-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    
+    setTimeout(() => {
+        card.classList.remove('active');
+    }, 3000);
+}
+
+// Enhanced hover effects
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px) scale(1.02)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        if (!this.classList.contains('active')) {
+            this.style.transform = 'translateY(0) scale(1)';
+        }
+    });
+});
+
+// Optimized parallax effect
+let ticking = false;
+
+function updateParallax(mouseX, mouseY) {
+    const icons = document.querySelectorAll('.project-icon');
+    const normalizedX = (mouseX / window.innerWidth) - 0.5;
+    const normalizedY = (mouseY / window.innerHeight) - 0.5;
+    
+    icons.forEach(icon => {
+        const moveX = normalizedX * 20;
+        const moveY = normalizedY * 20;
+        icon.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+    
+    ticking = false;
+}
+
+document.addEventListener('mousemove', function(e) {
+    if (!ticking) {
+        requestAnimationFrame(() => updateParallax(e.clientX, e.clientY));
+        ticking = true;
+    }
+});
+
+// Initialize gallery on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Preload first image of each project for faster opening
+    Object.keys(projectGalleries).forEach(projectId => {
+        const firstImage = projectGalleries[projectId].images[0];
+        const img = new Image();
+        img.src = firstImage.src;
+    });
+});
     </script>
 </body>
 </html>
